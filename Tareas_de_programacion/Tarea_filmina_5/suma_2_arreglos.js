@@ -1,0 +1,19 @@
+let num1 = new Array (6);
+num1[0]= 1
+num1[1]= 3
+num1[2]= 7
+num1[3]= 9
+num1[4]= 9
+num1[5]= 5
+let num2 = new Array (6);
+num2[0]= 6
+num2[1]= 9
+num2[2]= 2
+num2[3]= 5
+num2[4]= 9
+num2[5]= 4
+let resultado = 0;
+for(indice=0;indice<6;indice++){
+    resultado = num1[indice] + num2[indice]
+    console.log(num1[indice]+" + "+num2[indice]+ " = "+resultado);
+}

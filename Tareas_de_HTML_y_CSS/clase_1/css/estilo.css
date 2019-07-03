@@ -1,0 +1,37 @@
+p{ /* selector */
+    color: green;
+    text-align: justify;
+    font-family: "Calibri",Times,serif,Arial;
+    font-weight: bold;
+
+}
+
+h1 {
+    color: orange;
+    font-size: 80px;
+}
+h2{
+    color: blue;
+    font-size: 60px;
+}
+
+.parrafo1{
+    background-color: lightcoral;
+    color: yellowgreen;
+    font-size: 60px;
+}
+.parrafo2{
+    color: red;
+    font-size: 50px;
+    text-align: center;
+}
+
+#ortiva{
+    color: pink;   
+}
+
+body{
+    background-color: cyan;
+    background-image: url(../img/perro2.jpg);
+    background-size: 75%
+}

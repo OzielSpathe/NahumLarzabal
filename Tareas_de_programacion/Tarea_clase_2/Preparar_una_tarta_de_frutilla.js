@@ -1,0 +1,3 @@
+console.log("Entrada:Harina, azucar, manteca, huevo, frutilla, crema ");
+console.log("Proceso: mesclar la harina con el azucar, la manteca y los huevos hasta que se una la maza, luego colocar manteca en el recipiente para que no pege la maza, luego vertir la maza en el recipiente. Colocar el recipiente en el horno. Preparar la crema con azucar hasta que quede compacta, cortar la frutilla a gusto. Retirar del horno el recipiente con la maza y vertir la crema en el y luego colocar la frutilla");
+console.log("Salida: Tarta de Frutilla");
