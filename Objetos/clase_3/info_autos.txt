@@ -1,0 +1,6 @@
+auto,Ford,Fiesta,Nafta,2004,ABC123,1.6
+auto,Fiat,Palio,Diesel,2006,BCD234,1.3
+camion,Chevrolet,Corsa,Nafta,2002,CDE345,1.9,si
+auto,Volkswagen,Gol,Nafta,2003,DEF456,1.6
+auto,Peugeot,206,Diesel,2004,EFG567,1.1
+moto,Zanela,50cc,Nafta,2005,FGH678,1.6,2

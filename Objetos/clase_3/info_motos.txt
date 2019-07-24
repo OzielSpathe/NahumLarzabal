@@ -1,0 +1,6 @@
+Ford,Fiesta,Nafta,2004,ABC221,1.6,2
+Fiat,Palio,Diesel,2006,BCD221,1.3,2
+Chevrolet,Corsa,Nafta,2002,CDE221,1.9,2
+Volkswagen,Gol,Nafta,2003,DEF221,1.6,2
+Peugeot,206,Diesel,2004,EFG221,1.1,2
+Zanela,50cc,Nafta,2005,FGH221,1.6,2
