@@ -16,11 +16,17 @@ exports.__esModule = true;
 var Auto_1 = require("./Auto");
 var Motos = /** @class */ (function (_super) {
     __extends(Motos, _super);
-    function Motos(marca, modeloDelAuto, combustible, ano, patente, motor, rueda) {
-        var _this = _super.call(this, marca, modeloDelAuto, combustible, ano, patente, motor, rueda) || this;
-        _this.cantidadRuedas = 2;
+    function Motos(tipo, marca, modeloDelAuto, combustible, ano, patente, motor, ruedas) {
+        var _this = _super.call(this, tipo, marca, modeloDelAuto, combustible, ano, patente, motor) || this;
+        _this.ruedas = ruedas;
         return _this;
     }
+    Motos.prototype.getRuedas = function () {
+        return this.ruedas;
+    };
+    Motos.prototype.levatarMoto = function () {
+        console.log("hice un willy y voy con una rueda");
+    };
     Motos.prototype.acelerar = function () {
         this.velocidadActual += 4;
         return this.velocidadActual;

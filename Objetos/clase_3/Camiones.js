@@ -14,25 +14,14 @@ var __extends = (this && this.__extends) || (function () {
 })();
 exports.__esModule = true;
 var Auto_1 = require("./Auto");
-var rl = require("readline-sync");
 var Camiones = /** @class */ (function (_super) {
     __extends(Camiones, _super);
-    function Camiones(marca, modeloDelAuto, combustible, ano, patente, motor, rueda) {
-        return _super.call(this, marca, modeloDelAuto, combustible, ano, patente, motor, rueda) || this;
+    function Camiones(tipo, marca, modeloDelAuto, combustible, ano, patente, motor, acoplado) {
+        var _this = _super.call(this, tipo, marca, modeloDelAuto, combustible, ano, patente, motor) || this;
+        _this.acoplado = acoplado;
+        return _this;
     }
-    Camiones.prototype.cantidadAcoplado = function () {
-        if (this.cantidadRuedas != 4) {
-            this.acoplado = rl.question("cuantos acoplados lleva? ");
-            if (this.acoplado != "0") {
-                console.log(" es un camion con", this.acoplado, "acoplados");
-            }
-            else {
-                console.log("no lleva acoplado");
-            }
-        }
-        else if (this.cantidadRuedas == 4) {
-            this.acoplado = "No es un camion";
-        }
+    Camiones.prototype.getAcoplado = function () {
         return this.acoplado;
     };
     Camiones.prototype.acelerar = function () {

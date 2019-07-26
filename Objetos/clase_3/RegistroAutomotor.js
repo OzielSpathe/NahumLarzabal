@@ -7,12 +7,8 @@ var Camiones_1 = require("./Camiones");
 var Motos_1 = require("./Motos");
 var RegistroAutomotor = /** @class */ (function () {
     function RegistroAutomotor() {
-        this.listaAutos = [];
-        this.listaCamiones = [];
-        this.listaMotos = [];
+        this.listado = [];
         this.rellenarAutos();
-        this.rellenarMotos();
-        this.rellenarCamiones();
     }
     RegistroAutomotor.prototype.leerinfo = function (rutaArchivo) {
         var archivo = fs.readFileSync(rutaArchivo, 'utf8');
@@ -24,30 +20,31 @@ var RegistroAutomotor = /** @class */ (function () {
         var crearArchivo = this.leerinfo('./info_autos.txt');
         for (var i = 0; i < crearArchivo.length; i++) {
             var list = crearArchivo[i].split(",");
-            var auto_1 = new Auto_1["default"](list[0], list[1], list[2], parseInt(list[3]), list[4], parseFloat(list[5]), parseInt(list[6]));
-            this.listaAutos.push(auto_1);
+            var auto_1 = this.nuevoAuto(list[0], list[1], list[2], list[3], parseInt(list[4]), list[5], parseInt(list[6]), list[7]);
+            this.listado.push(auto_1);
         }
     };
-    RegistroAutomotor.prototype.rellenarMotos = function () {
-        var crearArchivo = this.leerinfo('./info_motos.txt');
-        for (var i = 0; i < crearArchivo.length; i++) {
-            var list = crearArchivo[i].split(",");
-            var moto = new Motos_1["default"](list[0], list[1], list[2], parseInt(list[3]), list[4], parseFloat(list[5]), parseInt(list[6]));
-            this.listaMotos.push(moto);
+    RegistroAutomotor.prototype.nuevoAuto = function (tipo, marca, modeloDelAuto, combustible, ano, patente, motor, ruedas, acoplado) {
+        var autoNuevo;
+        switch (tipo) {
+            case "auto": {
+                autoNuevo = new Auto_1["default"](tipo, marca, modeloDelAuto, combustible, ano, patente, motor);
+                break;
+            }
+            case "moto": {
+                autoNuevo = new Motos_1["default"](tipo, marca, modeloDelAuto, combustible, ano, patente, motor, ruedas);
+                break;
+            }
+            case "camion": {
+                autoNuevo = new Camiones_1["default"](tipo, marca, modeloDelAuto, combustible, ano, patente, motor, acoplado);
+            }
         }
-    };
-    RegistroAutomotor.prototype.rellenarCamiones = function () {
-        var crearArchivo = this.leerinfo('./info_camiones.txt');
-        for (var i = 0; i < crearArchivo.length; i++) {
-            var list = crearArchivo[i].split(",");
-            var camion = new Camiones_1["default"](list[0], list[1], list[2], parseInt(list[3]), list[4], parseFloat(list[5]), parseInt(list[6]));
-            this.listaCamiones.push(camion);
-        }
+        return autoNuevo;
     };
     RegistroAutomotor.prototype.buscarAuto = function (patente) {
-        for (var i = 0; i < this.listaAutos.length; i++) {
-            if (this.listaAutos[i].getPatente() == patente) {
-                return this.listaAutos[i];
+        for (var i = 0; i < this.listado.length; i++) {
+            if (this.listado[i].getPatente() == patente) {
+                return this.listado[i];
             }
             else {
                 return null;
@@ -56,9 +53,9 @@ var RegistroAutomotor = /** @class */ (function () {
     };
     RegistroAutomotor.prototype.borrar = function (patente) {
         var encontrado = false;
-        for (var i = 0; i < this.listaAutos.length; i++) {
-            if (this.listaAutos[i].getPatente() == patente) {
-                this.listaAutos.splice(i, 1);
+        for (var i = 0; i < this.listado.length; i++) {
+            if (this.listado[i].getPatente() == patente) {
+                this.listado.splice(i, 1);
                 encontrado = true;
                 return "La patente fue borrada";
             }
@@ -68,15 +65,15 @@ var RegistroAutomotor = /** @class */ (function () {
         }
     };
     RegistroAutomotor.prototype.cargarAuto = function () {
+        var tipo = rl.question("que tipo de vehiculo es: ");
         var marca = rl.question("indique la marca: ");
         var combustible = rl.question("indique que combustible usa: ");
         var modeloDelAuto = rl.question("indique el modelo del Auto: ");
         var ano = rl.questionInt("indique el año del auto: ");
         var patente = rl.question("indique la patente del auto: ");
         var tipoDeMotor = rl.questionFloat("indique el motor del auto: ");
-        var cantidadRueda = rl.questionInt("indique las ruedas del vehiculo: ");
-        var newAuto = new Auto_1["default"](marca, combustible, modeloDelAuto, ano, patente, tipoDeMotor, cantidadRueda);
-        this.listaAutos.push(newAuto);
+        var newAuto = new Auto_1["default"](tipo, marca, combustible, modeloDelAuto, ano, patente, tipoDeMotor);
+        this.listado.push(newAuto);
         return newAuto;
     };
     RegistroAutomotor.prototype.actualizar = function (patente) {
@@ -87,19 +84,12 @@ var RegistroAutomotor = /** @class */ (function () {
         else if (encontrado.getPatente() == patente) {
             this.borrar(patente);
             console.log("Ahora Actualizar los campos del auto buscado:");
-            return this.listaAutos.push(auto.cargarAuto());
+            return this.listado.push(auto.cargarAuto());
         }
     };
     return RegistroAutomotor;
 }());
+exports["default"] = RegistroAutomotor;
 var auto = new RegistroAutomotor();
-/* console.log(auto);
-console.log(auto.buscarAuto("ABC124"));
-console.log(auto.buscarAuto("ABC123"));
-console.log(auto.borrar("FGH678"));
-console.log(auto);
-auto.cargarAuto();
-console.log(auto);
-auto.actualizar("CDE345"); */
 console.log(auto);
 //let registro = new RegistroAutomotor("ford", "focus", "nafta", 2006, "ABC 123", 1.6);

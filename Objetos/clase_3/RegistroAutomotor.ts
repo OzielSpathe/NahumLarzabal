@@ -9,7 +9,7 @@ import Motos from "./Motos";
 
 
 
-class RegistroAutomotor {
+export default class RegistroAutomotor {
     private listado: Auto[];
    
 
@@ -118,14 +118,6 @@ class RegistroAutomotor {
 
 
 let auto = new RegistroAutomotor();
-/* console.log(auto);
-console.log(auto.buscarAuto("ABC124"));
-console.log(auto.buscarAuto("ABC123"));
-console.log(auto.borrar("FGH678"));
-console.log(auto);
-auto.cargarAuto();
-console.log(auto);
-auto.actualizar("CDE345"); */
 console.log(auto);
 
 
